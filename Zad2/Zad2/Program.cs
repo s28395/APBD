@@ -8,7 +8,7 @@ class Program
 
         int[] tab = { 1, 2, 3, 4, 5, 8, 23, 14 };
         
-        Console.WriteLine("max = " + max(tab));
+        Console.WriteLine("max is " + max(tab));
     }
 
     public static double max(int[] tab)
