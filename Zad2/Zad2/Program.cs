@@ -6,5 +6,6 @@ class Program
         Console.WriteLine("Hello, World!");
         int x = 1;
         Console.WriteLine("x="+x);
+        Console.WriteLine("Hello, World!");
     }
 }
