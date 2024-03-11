@@ -8,19 +8,17 @@ class Program
 
         int[] tab = { 1, 2, 3, 4, 5, 8, 23, 14 };
         
-        Console.WriteLine("srednia = " + srednia(tab));
+        Console.WriteLine("max = " + max(tab));
     }
 
-    public static double srednia(int[] tab)
+    public static double max(int[] tab)
     {
-        double suma = 0;
-        int ilosc=0;
+        int max = tab[0];
         for (int i = 0; i < tab.Length; i++)
         {
-            suma += tab[i];
-            ilosc++;
+            if (tab[i] > max) max = tab[i];
         }
         
-        return suma/ilosc;
+        return max;
     }
 }
