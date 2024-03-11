@@ -8,7 +8,7 @@ class Program
 
         int[] tab = { 1, 2, 3, 4, 5, 8, 23, 14 };
         
-        Console.WriteLine(srednia(tab));
+        Console.WriteLine("srednia = " + srednia(tab));
     }
 
     public static double srednia(int[] tab)
