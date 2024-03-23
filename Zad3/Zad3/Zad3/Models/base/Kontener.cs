@@ -1,6 +1,6 @@
 namespace Zad3;
 
-public abstract class Kontener
+public abstract class Kontener : IHazardNotifier
 {
     public double MasaLadunku { get; set;  }
     public double Wysokosc { get; }
@@ -25,6 +25,11 @@ public abstract class Kontener
     public virtual void Unload()
     {
         
+    }
+
+    public void HazardNotifier(string text)
+    {
+        Console.WriteLine($"Kontener is {NumerSeryjny} in hazard error");
     }
 }
 

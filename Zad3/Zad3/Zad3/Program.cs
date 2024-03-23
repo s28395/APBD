@@ -2,5 +2,7 @@
 
 using Zad3.Models;
 
-Plyny plyny = new Plyny("mleko",4,4,100,4,"GCC");
-plyny.Load(33);
+Gaz gaz = new Gaz(23,20,100,20,"GGC");
+Ship ship = new Ship("Name",13,100,50000);
+ship.LoadShip(gaz);
+ship.ToString();

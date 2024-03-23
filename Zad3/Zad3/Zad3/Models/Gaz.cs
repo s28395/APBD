@@ -1,6 +1,6 @@
 namespace Zad3.Models;
 
-public class Gaz : Kontener, IHazardNotifier
+public class Gaz : Kontener
 {
     public Gaz(double MasaLadunku, double wysokosc, double WagaWlasna, double glebokosc, string numerSeryjny) : base(MasaLadunku, wysokosc, WagaWlasna, glebokosc, numerSeryjny)
     {
@@ -17,13 +17,9 @@ public class Gaz : Kontener, IHazardNotifier
 
     public override void Unload()
     {
-        MasaLadunku = 0.05 * WagaWlasna;
+        MasaLadunku = 0.05 * MasaLadunku;
         base.Unload();
     }
-
-
-    public void HazardNotifier(string text)
-    {
-        throw new NotImplementedException();
-    }
+    
+    
 }

@@ -1,6 +1,6 @@
 namespace Zad3.Models;
 
-public class Plyny : Kontener, IHazardNotifier
+public class Plyny : Kontener
 {
     //ladunek niebiezpieczny - paliwo
     // biezpieczny - mleko
@@ -25,11 +25,5 @@ public class Plyny : Kontener, IHazardNotifier
     {
         MasaLadunku = 0;
         base.Unload();
-    }
-
-
-    public void HazardNotifier(string text)
-    {
-        Console.WriteLine($"Kontener is {NumerSeryjny} in hazard error");
     }
 }
