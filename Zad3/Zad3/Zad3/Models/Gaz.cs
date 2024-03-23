@@ -14,6 +14,7 @@ public class Gaz : Kontener
             base.Load(weight);
         }
     }
+    
 
     public override void Unload()
     {

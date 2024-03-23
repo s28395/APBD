@@ -18,7 +18,7 @@ public abstract class Kontener : IHazardNotifier
     }
 
     public virtual void Load(double weight)
-    {
+    { 
         throw new OverfillException("Przekroczyl maksymalna wage");
     }
 

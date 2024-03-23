@@ -32,7 +32,6 @@ public class Ship
         {
             throw new Exception("Za duzo kontenerow");
         }
-        
     }
 
     public void UnloadShip(Kontener kontener)
@@ -42,13 +41,21 @@ public class Ship
 
     public void ChangeContainer(Kontener poprzedni, Kontener nowy)
     {
-        poprzedni = nowy;
+        int index = Container.IndexOf(poprzedni);
+        Container[index] = nowy;
     }
 
-    public void ChangeShip(Kontener kontener, Ship skad, Ship dokad)
+    public void ChangeShip(Kontener kontener, Ship dokad)
     {
-        skad.Container.Remove(kontener);
-        dokad.Container.Add(kontener);
+        if (Container.Contains(kontener))
+        {
+            Container.Remove(kontener);
+            dokad.Container.Add(kontener);
+        }
+        else
+        {
+            Console.WriteLine("Nie ma takiego konteneru in ship");
+        }
     }
 
     public override string ToString()
