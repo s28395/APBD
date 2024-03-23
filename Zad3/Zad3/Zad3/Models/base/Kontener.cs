@@ -22,9 +22,9 @@ public abstract class Kontener
         throw new OverfillException("Przekroczyl maksymalna wage");
     }
 
-    public void Unload()
+    public virtual void Unload()
     {
-        MasaLadunku = 0;
+        
     }
 }
 

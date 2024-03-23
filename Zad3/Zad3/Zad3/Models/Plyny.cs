@@ -21,6 +21,12 @@ public class Plyny : Kontener, IHazardNotifier
         }
     }
 
+    public override void Unload()
+    {
+        MasaLadunku = 0;
+        base.Unload();
+    }
+
 
     public void HazardNotifier(string text)
     {
