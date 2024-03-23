@@ -2,18 +2,35 @@ namespace Zad3;
 
 public abstract class Kontener
 {
-    private double MasaAll { get; }
-    private double Wysokosc { get; }
-    private double MasaKontenera { get;  }
-    private double Glebokosc { get;  }
-    private string NumerSeryjny { get; set; }
+    public double MasaLadunku { get; set;  }
+    public double Wysokosc { get; }
+    public double WagaWlasna { get; }
+    public double Glebokosc { get;  }
+    public string NumerSeryjny { get; set; }
 
-    protected Kontener(double masaAll, double wysokosc, double masaKontenera, double glebokosc, string numerSeryjny)
+    protected Kontener(double MasaLadunku, double wysokosc, double WagaWlasna, double glebokosc, string numerSeryjny)
     {
-        MasaAll = masaAll;
+        this.MasaLadunku = MasaLadunku;
         Wysokosc = wysokosc;
-        MasaKontenera = masaKontenera;
+        this.WagaWlasna = WagaWlasna;
         Glebokosc = glebokosc;
         NumerSeryjny = numerSeryjny;
+    }
+
+    public virtual void Load(double weight)
+    {
+        throw new OverfillException("Przekroczyl maksymalna wage");
+    }
+
+    public void Unload()
+    {
+        MasaLadunku = 0;
+    }
+}
+
+public class OverfillException : Exception
+{
+    public OverfillException(string? message) : base(message)
+    {
     }
 }
