@@ -14,8 +14,13 @@ public class Gaz : Kontener, IHazardNotifier
             base.Load(weight);
         }
     }
-    
-    
+
+    public override void Unload()
+    {
+        MasaLadunku = 0.05 * WagaWlasna;
+        base.Unload();
+    }
+
 
     public void HazardNotifier(string text)
     {
