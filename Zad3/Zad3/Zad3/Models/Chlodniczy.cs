@@ -3,43 +3,61 @@ namespace Zad3.Models;
 public class Chlodniczy : Kontener
 {
     public string Rodzaj;
-    public double temperatura;
+    public double Temperatura;
+    public static int counerSeryjny = 0;
 
     public Chlodniczy(string Rodzaj, double temperatura, double MasaLadunku, double wysokosc, double WagaWlasna,
-        double glebokosc, string numerSeryjny) : base(MasaLadunku, wysokosc, WagaWlasna, glebokosc, numerSeryjny)
+        double glebokosc) : base(MasaLadunku, wysokosc, WagaWlasna, glebokosc)
     {
-        this.Rodzaj = Rodzaj;
-        this.temperatura = temperatura;
-        
-        if (this.Rodzaj.Equals("bananas") || this.Rodzaj.Equals("chocolate") || this.Rodzaj.Equals("fish") ||
-            this.Rodzaj.Equals("meat") ||this.Rodzaj.Equals("ice cream") || this.Rodzaj.Equals("frozen pizza") ||
-            this.Rodzaj.Equals("cheese") || this.Rodzaj.Equals("sausages") || this.Rodzaj.Equals("butter") ||
-            this.Rodzaj.Equals("eggs"))
+        try
         {
-            
-            if (this.Rodzaj.Equals("bananas") && this.temperatura > 13.3) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("chocolate") && this.temperatura > 18) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("fish") && this.temperatura > 2) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("meat") && this.temperatura > -15) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("ice cream") && this.temperatura > -18) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("frozen pizza") && this.temperatura > -30) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("cheese") && this.temperatura > 7.2) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("sausages") && this.temperatura > 5) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("butter") && this.temperatura > 20.5) throw new OverfillException("Error");
-            if (this.Rodzaj.Equals("eggs") && this.temperatura > 19) throw new OverfillException("Error");
+            this.Rodzaj = Rodzaj;
+            this.Temperatura = temperatura;
+            if (Verify() == false) throw new OverfillException($"Nie mozemy uzywac kontener {this.NumerSeryjny}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+    
+    public override string numerSeryjny()
+    {
+        return "KON-C-" + ++counerSeryjny;
+    }
+
+    public bool Verify()
+    {
+        if ((Rodzaj.Equals("bananas") && Temperatura <= 13.3) ||
+            (Rodzaj.Equals("chocolate") && Temperatura <= 18) || (Rodzaj.Equals("fish") && Temperatura <= 2) ||
+            (Rodzaj.Equals("meat") && Temperatura <= -15) || (Rodzaj.Equals("ice cream") && Temperatura <= -18) ||
+            (Rodzaj.Equals("frozen pizza") && Temperatura <= -30) ||
+            (Rodzaj.Equals("cheese") && Temperatura <= 7.2) || (Rodzaj.Equals("sausages") && Temperatura <= 5) ||
+            (Rodzaj.Equals("butter") && Temperatura <= 20.5) ||
+            (Rodzaj.Equals("eggs") && Temperatura <= 19))
+        {
+            return true;
         }
         else
         {
-            throw new OverfillException($"Nie mamy {this.Rodzaj} ma liscie");
+            return false;
         }
     }
 
-    public override void Load(double weight)
+    public void Load(double weight)
     {
-        if (MasaLadunku + weight <= WagaWlasna) MasaLadunku += weight;
-        else
+        try
         {
-            base.Load(weight);
+            if (Verify() == false) throw new OverfillException("Nie mozemy uzywac");
+            if (MasaLadunku + weight <= WagaWlasna) MasaLadunku += weight;
+            else
+            {
+                throw new OverfillException("Przekroczyl maksymalna wage");
+            }
+        }
+        catch (OverfillException e)
+        {
+            Console.WriteLine(e.Message);
         }
     }
     

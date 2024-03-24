@@ -2,17 +2,30 @@ namespace Zad3.Models;
 
 public class Gaz : Kontener
 {
-    public Gaz(double MasaLadunku, double wysokosc, double WagaWlasna, double glebokosc, string numerSeryjny) : base(MasaLadunku, wysokosc, WagaWlasna, glebokosc, numerSeryjny)
+    public static int counerSeryjny = 0;
+    public Gaz(double MasaLadunku, double wysokosc, double WagaWlasna, double glebokosc) : base(MasaLadunku, wysokosc, WagaWlasna, glebokosc)
     {
     }
 
-    public override void Load(double weight)
+    public void Load(double weight)
     {
-        if (MasaLadunku + weight <= WagaWlasna) MasaLadunku += weight;
-        else
-        {
-            base.Load(weight);
+        try
+        { 
+            if (MasaLadunku + weight <= WagaWlasna) MasaLadunku += weight;
+            else
+            {
+                throw new OverfillException("Przekroczyl maksymalna wage");
+            }
         }
+        catch (OverfillException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+    
+    public override string numerSeryjny()
+    {
+        return "KON-G-" + ++counerSeryjny;
     }
     
 
