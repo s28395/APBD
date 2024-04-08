@@ -14,11 +14,18 @@ Chlodniczy banany = new Chlodniczy("bananas", 10, 45, 10, 100, 56);
 
 ship.LoadShip(paliwo);
 ship.LoadShip(mleko);
-ship.LoadShip(mleko2);
-ship.LoadShip(gaz);
+ship2.LoadShip(mleko2);
+ship2.LoadShip(gaz);
 ship.LoadShip(banany);
 
 Console.WriteLine(ship.ToString());
 
-paliwo.Load(20);
+
+Console.WriteLine(ship2.ToString());
+
+ship.UnloadShip(paliwo);
+
 Console.WriteLine(ship.ToString());
+ship.ChangeShip(mleko,ship2);
+Console.WriteLine(ship.ToString());
+Console.WriteLine(ship2.ToString());

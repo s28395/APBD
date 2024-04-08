@@ -28,8 +28,9 @@ public class Plyny : Kontener
             }
         }
         catch (OverfillException e)
-        { 
+        {
             Console.WriteLine(e.Message);
+            //throw;
         }
     }
 
