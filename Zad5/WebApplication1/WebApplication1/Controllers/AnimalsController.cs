@@ -13,7 +13,7 @@ public class AnimalsController : ControllerBase
         new Animal{Category = "cat",Color = "black",Id = 2,Name = "puszok",Weight = 5},
         new Animal{Category = "mouse",Color = "grey",Id = 3,Name = "ratatuj",Weight = 2},
         new Animal{Category = "goat",Color = "white",Id = 4,Name = "molka",Weight = 40},
-        //new Animal{Category = "bear",Color = "brown",Id = 5,Name = "misza",Weight = 100}
+        new Animal{Category = "bear",Color = "brown",Id = 5,Name = "misza",Weight = 100}
     };
 
 
