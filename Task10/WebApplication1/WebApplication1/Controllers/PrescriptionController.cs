@@ -40,7 +40,6 @@ public class PrescriptionController : ControllerBase
         await _context.Prescriptions.AddAsync(requestDto.prescription);
         await _context.SaveChangesAsync();
         
-
         foreach (var medicament in requestDto.medicaments)
         {
             var existingMedicament = await _context.Medicaments.FindAsync(medicament.IdMedicament);
